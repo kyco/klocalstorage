@@ -1,19 +1,3 @@
-/*
-**
-**  klocalstorage
-**  =============
-**
-**  Version 1.0.2
-**
-**  Brought to you by
-**  https://www.kycosoftware.com
-**
-**  Copyright 2015 Cornelius Weidmann
-**
-**  Distributed under the GPL
-**
-*/
-
 'use strict';
 
 var klocalstorage = {} || klocalstorage;
@@ -28,10 +12,12 @@ klocalstorage.ERROR_MSG = 'An error occurred while getting the required dependen
 klocalstorage.editor    = {};
 
 klocalstorage.init = function() {
-  var myTrigger = '<div id="klocalstorage_trigger">+</div>';
-  var myDiv     = '<div id="klocalstorage"></div>';
-  var myOverlay = '<div id="klocalstorage_overlay"></div>';
+  var myStyle   = '<style>.klocalstorage_activated{height:100%;overflow:hidden}#klocalstorage_overlay{position:fixed;z-index:99998;background-color:rgba(0,0,0,0.25);top:0;left:0;width:100%;height:100%;display:none}#klocalstorage_overlay.active{display:block}#klocalstorage_trigger{position:fixed;z-index:100000;top:0;right:0;width:25px;height:25px;line-height:25px;text-align:center;font-family:monospace;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;user-select:none}#klocalstorage_trigger.active{background-color:#fff}#klocalstorage *{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}#klocalstorage{display:none;position:fixed;z-index:99999;top:0;right:0;width:600px;height:100%;background-color:#fff;font-family:monospace;white-space:pre;font-size:13px;line-height:1.5;overflow:scroll;box-shadow:0 0 15px #555}#klocalstorage.active{display:block}#klocalstorage h5{position:relative;padding:10px;height:40px;line-height:20px;-webkit-user-select:none;-moz-user-select:none;user-select:none}#klocalstorage h5+div{padding:0 10px;display:none;margin-bottom:10px}#klocalstorage h5+div.active{display:block}#klocalstorage h5:hover,#klocalstorage h5.active{background-color:#eee;cursor:pointer}#klocalstorage h5.active{border-left:5px solid #ddd}#klocalstorage h5.active button{display:block}#klocalstorage h5 button{position:absolute;display:none;top:9px;width:60px;height:23px;font-size:11px;cursor:default;text-align:center}#klocalstorage h5 button[action="save"],#klocalstorage h5 button[action="restore"]{right:15px}#klocalstorage h5 button[action="delete"]{right:75px}#klocalstorage h5 .klocalstorage_msg{position:absolute;top:12px;right:145px}#klocalstorage textarea.text{min-height:100%;line-height:1.5}#klocalstorage .jsoneditor,#klocalstorage .outer{height:auto;min-height:150px}#klocalstorage .outer{resize:vertical}</style>';
+  var myTrigger = '<div id ="klocalstorage_trigger">+</div>';
+  var myDiv     = '<div id ="klocalstorage"></div>';
+  var myOverlay = '<div id ="klocalstorage_overlay"></div>';
 
+  $('head').append(myStyle);
   $('body').append(myTrigger, myDiv, myOverlay);
   klocalstorage.getLatest();
   klocalstorage.attachMarkupHandlers();

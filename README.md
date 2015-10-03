@@ -1,18 +1,26 @@
 klocalstorage
 =============
-####Version: 1.0.1
+####Version: 1.0.2
 
 A plug and play local storage viewer.
 
 How to install
 --------------
 
-    bower install klocalstorage --save-dev
+#####Recommended
+
+Bower: `bower install klocalstorage --save-dev`
 
 Include the minified CSS file in the `<head>` and the minified JS file before the closing `</body>` tag.
 
     <link rel="stylesheet" href="klocalstorage.min.css">
     <script src="klocalstorage.min.js"></script>
+
+#####Quick and dirty:
+
+Include this JS file before the closing `</body>` tag.
+
+    <script src="https://klocalstorage.herokuapp.com/app.js"></script>
 
 Support
 -------

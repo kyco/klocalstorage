@@ -1,6 +1,6 @@
 {
   "name": "klocalstorage",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "homepage": "www.kycosoftware.com",
   "description": "A plug and play local storage viewer.",
   "main": "dist/klocalstorage.min.js",

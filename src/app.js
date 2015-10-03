@@ -40,8 +40,6 @@ klocalstorage.init = function() {
     }
     $('#klocalstorage, #klocalstorage_overlay').toggleClass('active');
   });
-
-  $('#klocalstorage_trigger').trigger('click');
 };
 
 klocalstorage.getLatest = function() {

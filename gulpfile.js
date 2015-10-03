@@ -52,6 +52,24 @@ gulp.task('concatjs', function() {
   .pipe(livereload());
 });
 
+// JS
+gulp.task('herokujs', function() {
+  return gulp.src([
+    // './bower_components/jsoneditor/dist/jsoneditor.min.js',
+    './src/heroku.js'
+  ])
+  .pipe(plumber({
+    errorHandler: onError
+  }))
+  .pipe(concat('app.js'))
+  .pipe(gulp.dest('./'))
+  .pipe(uglify({
+    compress: false
+  }))
+  .pipe(gulp.dest('./'))
+  .pipe(livereload());
+});
+
 // Sass
 gulp.task('sass-dev', function() {
   return gulp.src([
@@ -107,6 +125,7 @@ gulp.task('dev', function() {
 
   // Watch JS
   gulp.watch('./src/app.js', ['concatjs']);
+  gulp.watch('./src/heroku.js', ['herokujs']);
 
   // Watch Sass
   gulp.watch(['./src/app.scss'], ['sass-dev']);
@@ -115,6 +134,6 @@ gulp.task('dev', function() {
   gulp.watch('./src/home.html', ['html']);
 });
 
-gulp.task('build', ['concatjs', 'uglifyjs', 'sass-dev', 'sass-prod'], function() {
+gulp.task('build', ['herokujs', 'concatjs', 'uglifyjs', 'sass-dev', 'sass-prod'], function() {
     process.exit();
 });
