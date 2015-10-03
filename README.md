@@ -4,6 +4,17 @@ klocalstorage
 
 A plug and play local storage viewer.
 
+How to install
+--------------
+
+Include the minified JS file before the closing BODY tag.
+
+	<script src="klocalstorage.min.js"></script>
+
+Include the minified CSSS file in the HEAD.
+
+	<link rel="stylesheet" href="klocalstorage.min.css">
+
 Support
 -------
 
