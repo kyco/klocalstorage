@@ -1,6 +1,6 @@
 klocalstorage
 =============
-####Version: 1.0.0
+####Version: 1.0.1
 
 A plug and play local storage viewer.
 
