@@ -6,7 +6,6 @@ klocalstorage.JQUERY_URL           = 'https://cdnjs.cloudflare.com/ajax/libs/jqu
 klocalstorage.JSONEDITOR_URL       = 'https://cdnjs.cloudflare.com/ajax/libs/jsoneditor/4.2.1/jsoneditor.min.js';
 klocalstorage.JSONEDITOR_STYLE_URL = 'https://cdnjs.cloudflare.com/ajax/libs/jsoneditor/4.2.1/jsoneditor.min.css';
 
-klocalstorage.STYLE     = document.getElementById('klocalstorage_style');
 klocalstorage.SCRIPT    = document.getElementById('klocalstorage_script');
 klocalstorage.ERROR_MSG = 'An error occurred while getting the required dependencies.';
 klocalstorage.editor    = {};
@@ -219,7 +218,7 @@ klocalstorage.appendStyle = function(d, style) {
   style.rel  = 'stylesheet';
   style.href = klocalstorage.JSONEDITOR_STYLE_URL;
 
-  klocalstorage.STYLE.parentNode.insertBefore(style, klocalstorage.STYLE);
+  klocalstorage.SCRIPT.parentNode.insertBefore(style, klocalstorage.SCRIPT);
 };
 
 /*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -1,6 +1,6 @@
 klocalstorage
 =============
-####Version: 1.0.2
+####Version: 1.0.3
 
 A plug and play local storage viewer.
 
@@ -21,7 +21,7 @@ the closing `</body>` tag. The IDs are important, don't remove them.
 
 Include this JS file before the closing `</body>` tag.
 
-    <script src="https://klocalstorage.herokuapp.com/app.js"></script>
+    <script id="klocalstorage_script" src="https://klocalstorage.herokuapp.com/app.js"></script>
 
 Support
 -------
