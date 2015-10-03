@@ -5,7 +5,7 @@ $zIndex: 99999;
   overflow: hidden;
 }
 
-#localstorage-browser-overlay {
+#klocalstorage_overlay {
   position: fixed;
   z-index: $zIndex - 1;
   background-color: rgba(0, 0, 0, 0.25);
@@ -20,8 +20,8 @@ $zIndex: 99999;
   }
 }
 
-#localstorage-browser-trigger,
-#localstorage-browser-options {
+#klocalstorage_trigger,
+#klocalstorage_options {
   position: fixed;
   z-index: $zIndex + 1;
   top: 0;
@@ -41,14 +41,14 @@ $zIndex: 99999;
   }
 }
 
-#localstorage-browser-options {
+#klocalstorage_options {
   right: 25px;
   line-height: 1.25;
   transform: rotate(90deg);
   display: none;
 }
 
-#localstorage-browser {
+#klocalstorage {
   display: none;
   position: fixed;
   z-index: $zIndex;

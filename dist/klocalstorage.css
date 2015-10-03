@@ -1,9 +1,25 @@
+/*
+**
+**  klocalstorage
+**  =============
+**
+**  Version 1.0.0
+**
+**  Brought to you by
+**  https://www.kycosoftware.com
+**
+**  Copyright 2015 Cornelius Weidmann
+**
+**  Distributed under the GPL
+**
+*/
+
 .klocalstorage_activated {
   height: 100%;
   overflow: hidden;
 }
 
-#localstorage-browser-overlay {
+#klocalstorage_overlay {
   position: fixed;
   z-index: 99998;
   background-color: rgba(0, 0, 0, 0.25);
@@ -13,12 +29,12 @@
   height: 100%;
   display: none;
 }
-#localstorage-browser-overlay.active {
+#klocalstorage_overlay.active {
   display: block;
 }
 
-#localstorage-browser-trigger,
-#localstorage-browser-options {
+#klocalstorage_trigger,
+#klocalstorage_options {
   position: fixed;
   z-index: 100000;
   top: 0;
@@ -33,19 +49,19 @@
   -moz-user-select: none;
   user-select: none;
 }
-#localstorage-browser-trigger.active,
-#localstorage-browser-options.active {
+#klocalstorage_trigger.active,
+#klocalstorage_options.active {
   background-color: #fff;
 }
 
-#localstorage-browser-options {
+#klocalstorage_options {
   right: 25px;
   line-height: 1.25;
   transform: rotate(90deg);
   display: none;
 }
 
-#localstorage-browser {
+#klocalstorage {
   display: none;
   position: fixed;
   z-index: 99999;
@@ -61,43 +77,43 @@
   overflow: scroll;
   box-shadow: 0 0 15px #555;
 }
-#localstorage-browser.active {
+#klocalstorage.active {
   display: block;
 }
-#localstorage-browser h5 {
+#klocalstorage h5 {
   position: relative;
   padding: 10px;
   -webkit-user-select: none;
   -moz-user-select: none;
   user-select: none;
 }
-#localstorage-browser h5 + div {
+#klocalstorage h5 + div {
   padding: 0 10px;
   display: none;
   margin-bottom: 10px;
 }
-#localstorage-browser h5 + div.active {
+#klocalstorage h5 + div.active {
   display: block;
 }
-#localstorage-browser h5:hover, #localstorage-browser h5.active {
+#klocalstorage h5:hover, #klocalstorage h5.active {
   background-color: #eee;
   cursor: pointer;
 }
-#localstorage-browser h5.active button {
+#klocalstorage h5.active button {
   display: block;
 }
-#localstorage-browser h5 button {
+#klocalstorage h5 button {
   position: absolute;
   display: none;
   top: 10px;
   right: 15px;
 }
-#localstorage-browser h5 .icon-select-selected {
+#klocalstorage h5 .icon-select-selected {
   position: absolute;
   top: 12px;
   right: 60px;
 }
-#localstorage-browser textarea.text {
+#klocalstorage textarea.text {
   min-height: 130px;
   resize: vertical;
   line-height: 1.5;
