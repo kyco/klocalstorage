@@ -11,7 +11,7 @@ Include the minified JS file before the closing BODY tag.
 
 	<script src="klocalstorage.min.js"></script>
 
-Include the minified CSSS file in the HEAD.
+Include the minified CSS file in the HEAD.
 
 	<link rel="stylesheet" href="klocalstorage.min.css">
 
