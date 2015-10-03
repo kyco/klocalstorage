@@ -27,7 +27,8 @@ Usage
 -----
 
 If it is up and running correctly you will see a little "+" in the top right corner.
-![Successfully running](https://www.kycosoftware.com/uploads/klocalstorage/screenshot.png2)
+
+![Successfully running](https://www.kycosoftware.com/uploads/klocalstorage/screenshot2.png)
 
 Clicking the "+" will open and refresh the localStorage viewer. The viewer makes use
 of JSONEditor so you will be able to easily navigate your localStorage. Editing a
@@ -35,6 +36,7 @@ value and then hitting the "Save" button will save the value. You can edit multi
 objects and arrays (you can also do this in text view or tree view). Hitting the "Delete"
 button will remove the item from localStorage. You can undo a "Delete" with a "Restore".
 To close klocalstorage click away from it or click the little "-" in the top right corner.
+
 ![Viewing localstorage](https://www.kycosoftware.com/uploads/klocalstorage/screenshot.png)
 
 Support
