@@ -2,9 +2,10 @@ var gulp       = require('gulp');
 var beep       = require('beepbeep');
 var gutil      = require('gulp-util');
 var plumber    = require('gulp-plumber');
-var uglify     = require('gulp-uglifyjs');
 var concat     = require('gulp-concat');
+var uglify     = require('gulp-uglify');
 var sass       = require('gulp-ruby-sass');
+var rename     = require('gulp-rename');
 var livereload = require('gulp-livereload');
 
 var onError = function (err) {
@@ -22,36 +23,55 @@ var onError = function (err) {
 // JS
 gulp.task('uglifyjs', function() {
   return gulp.src([
-    './jsoneditor.min.js',
-    './localstorage-browser.js'
+    // './bower_components/jsoneditor/dist/jsoneditor.min.js',
+    './src/app.js'
   ])
   .pipe(plumber({
     errorHandler: onError
   }))
-  .pipe(uglify('app.js', {
+  .pipe(concat('klocalstorage.min.js'))
+  .pipe(gulp.dest('./dist'))
+  .pipe(uglify({
     compress: false
   }))
-  .pipe(gulp.dest('./'))
+  .pipe(gulp.dest('./dist'))
   .pipe(livereload());
 });
 
 // JS
-gulp.task('concat', function() {
+gulp.task('concatjs', function() {
   return gulp.src([
-    './jsoneditor.min.js',
-    './localstorage-browser.js'
+    // './bower_components/jsoneditor/dist/jsoneditor.min.js',
+    './src/app.js'
   ])
   .pipe(plumber({
     errorHandler: onError
   }))
-  .pipe(concat('app.js'))
-  .pipe(gulp.dest('./'));
+  .pipe(concat('klocalstorage.js'))
+  .pipe(gulp.dest('./dist'))
+  .pipe(livereload());
 });
 
 // Sass
-gulp.task('sass', function() {
+gulp.task('sass-dev', function() {
   return gulp.src([
-    './localstorage-browser.scss'
+    './src/app.scss'
+  ])
+  .pipe(plumber({
+    errorHandler: onError
+  }))
+  .pipe(sass({
+    style: 'expanded',
+    cacheLocation: './cache/.sass-cache'
+  }))
+  .pipe(rename('klocalstorage.css'))
+  .pipe(gulp.dest('./dist/'))
+  .pipe(livereload());
+});
+
+gulp.task('sass-prod', function() {
+  return gulp.src([
+    './src/app.scss'
   ])
   .pipe(plumber({
     errorHandler: onError
@@ -60,14 +80,15 @@ gulp.task('sass', function() {
     style: 'compressed',
     cacheLocation: './cache/.sass-cache'
   }))
-  .pipe(gulp.dest('./'))
+  .pipe(rename('klocalstorage.min.css'))
+  .pipe(gulp.dest('./dist/'))
   .pipe(livereload());
 });
 
 // HTML
 gulp.task('html', function() {
   return gulp.src([
-    './home.html'
+    './src/home.html'
   ])
   .pipe(livereload());
 });
@@ -80,17 +101,20 @@ gulp.task('html', function() {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Primary task to watch other tasks
-gulp.task('yo', function() {
+gulp.task('dev', function() {
   // LiveReload
   livereload.listen();
 
   // Watch JS
-  gulp.watch('./localstorage-browser.js', ['uglifyjs']);
-  // gulp.watch('./localstorage-browser.js', ['concat']);
+  gulp.watch('./src/app.js', ['concatjs']);
 
   // Watch Sass
-  gulp.watch(['./localstorage-browser.scss'], ['sass']);
+  gulp.watch(['./src/app.scss'], ['sass-dev']);
 
   // Watch HTML and livereload
-  gulp.watch('./home.html', ['html']);
+  gulp.watch('./src/home.html', ['html']);
+});
+
+gulp.task('build', ['concatjs', 'uglifyjs', 'sass-dev', 'sass-prod'], function() {
+    process.exit();
 });
