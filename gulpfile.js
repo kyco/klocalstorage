@@ -65,7 +65,7 @@ gulp.task('sass-dev', function() {
     cacheLocation: './cache/.sass-cache'
   }))
   .pipe(rename('klocalstorage.css'))
-  .pipe(gulp.dest('./dist/'))
+  .pipe(gulp.dest('./dist'))
   .pipe(livereload());
 });
 
@@ -81,7 +81,7 @@ gulp.task('sass-prod', function() {
     cacheLocation: './cache/.sass-cache'
   }))
   .pipe(rename('klocalstorage.min.css'))
-  .pipe(gulp.dest('./dist/'))
+  .pipe(gulp.dest('./dist'))
   .pipe(livereload());
 });
 

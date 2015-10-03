@@ -3,7 +3,7 @@
 **  klocalstorage
 **  =============
 **
-**  Version 1.0.0
+**  Version 1.0.1
 **
 **  Brought to you by
 **  https://www.kycosoftware.com
@@ -33,8 +33,7 @@
   display: block;
 }
 
-#klocalstorage_trigger,
-#klocalstorage_options {
+#klocalstorage_trigger {
   position: fixed;
   z-index: 100000;
   top: 0;
@@ -49,16 +48,14 @@
   -moz-user-select: none;
   user-select: none;
 }
-#klocalstorage_trigger.active,
-#klocalstorage_options.active {
+#klocalstorage_trigger.active {
   background-color: #fff;
 }
 
-#klocalstorage_options {
-  right: 25px;
-  line-height: 1.25;
-  transform: rotate(90deg);
-  display: none;
+#klocalstorage * {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 #klocalstorage {
@@ -83,6 +80,8 @@
 #klocalstorage h5 {
   position: relative;
   padding: 10px;
+  height: 40px;
+  line-height: 20px;
   -webkit-user-select: none;
   -moz-user-select: none;
   user-select: none;
@@ -99,24 +98,46 @@
   background-color: #eee;
   cursor: pointer;
 }
+#klocalstorage h5.active {
+  border-left: 5px solid #ddd;
+}
 #klocalstorage h5.active button {
   display: block;
 }
 #klocalstorage h5 button {
   position: absolute;
   display: none;
-  top: 10px;
+  top: 9px;
+  width: 60px;
+  height: 23px;
+  font-size: 11px;
+  cursor: default;
+  text-align: center;
+}
+#klocalstorage h5 button[action="save"], #klocalstorage h5 button[action="restore"] {
   right: 15px;
 }
-#klocalstorage h5 .icon-select-selected {
+#klocalstorage h5 button[action="delete"] {
+  right: 75px;
+}
+#klocalstorage h5 .klocalstorage_msg {
   position: absolute;
   top: 12px;
-  right: 60px;
+  right: 145px;
 }
 #klocalstorage textarea.text {
-  min-height: 130px;
-  resize: vertical;
+  min-height: 100%;
   line-height: 1.5;
+}
+
+#klocalstorage .jsoneditor,
+#klocalstorage .outer {
+  height: auto;
+  min-height: 150px;
+}
+
+#klocalstorage .outer {
+  resize: vertical;
 }
 
 /*# sourceMappingURL=app.css.map */

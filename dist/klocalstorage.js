@@ -3,7 +3,7 @@
 **  klocalstorage
 **  =============
 **
-**  Version 1.0.0
+**  Version 1.0.1
 **
 **  Brought to you by
 **  https://www.kycosoftware.com
@@ -29,16 +29,15 @@ klocalstorage.editor    = {};
 
 klocalstorage.init = function() {
   var myTrigger = '<div id="klocalstorage_trigger">+</div>';
-  var myOptions = '<div id="klocalstorage_options">…</div>';
   var myDiv     = '<div id="klocalstorage"></div>';
   var myOverlay = '<div id="klocalstorage_overlay"></div>';
 
-  $('body').append(myTrigger, myOptions, myDiv, myOverlay);
+  $('body').append(myTrigger, myDiv, myOverlay);
   klocalstorage.getLatest();
   klocalstorage.attachMarkupHandlers();
 
   $('#klocalstorage_overlay').click(function() {
-    $('#klocalstorage_trigger, #klocalstorage_options, #klocalstorage, #klocalstorage_overlay').toggleClass('active');
+    $('#klocalstorage_trigger, #klocalstorage, #klocalstorage_overlay').toggleClass('active');
     $('body').toggleClass('klocalstorage_activated');
     if (!$('#klocalstorage_trigger').hasClass('active')) {
       $('#klocalstorage_trigger').html('+');
@@ -55,8 +54,10 @@ klocalstorage.init = function() {
     } else {
       $(this).html('+');
     }
-    $('#klocalstorage_options, #klocalstorage, #klocalstorage_overlay').toggleClass('active');
+    $('#klocalstorage, #klocalstorage_overlay').toggleClass('active');
   });
+
+  $('#klocalstorage_trigger').trigger('click');
 };
 
 klocalstorage.getLatest = function() {
@@ -71,7 +72,7 @@ klocalstorage.getLatest = function() {
   };
 
   for (i = 0; i < n; i++) {
-    markup += '<h5 data-index="' + i + '">' + localStorage.key(i) + '<button>Save</button></h5>';
+    markup += '<h5 data-index="' + i + '">' + localStorage.key(i) + '<button action="delete">Delete</button><button action="save">Save</button></h5>';
     markup += '<div data-index="' + i + '"></div>';
   }
 
@@ -111,23 +112,72 @@ klocalstorage.getLatest = function() {
 };
 
 klocalstorage.attachMarkupHandlers = function() {
-  $('#klocalstorage h5').off('click').on('click', function() {
-    $(this).toggleClass('active').next('div').toggleClass('active');
-  });
+  var clickSave = function(e) {
+    var index = $(this).parent().data('index');
+    var key   = localStorage.key(index);
+    var value;
 
-  $('#klocalstorage h5 button').off('click').on('click', function(e) {
+    e.stopImmediatePropagation();
+
+    try {
+      value = klocalstorage.editor['_' + index].get();
+      localStorage.setItem(key, JSON.stringify(value));
+      $(this).before('<span class="klocalstorage_msg">Saved!</span>');
+      $('#klocalstorage h5 .klocalstorage_msg').fadeOut(1000, function() {
+        $(this).remove();
+      });
+    } catch (err) {
+      $(this).before('<span class="klocalstorage_msg">Error! Must be String, Number, Array or Object!</span>');
+      $('#klocalstorage h5 .klocalstorage_msg').fadeOut(5000, function() {
+        $(this).remove();
+      });
+    }
+  };
+
+  var clickDelete = function(e) {
     var index = $(this).parent().data('index');
     var value = klocalstorage.editor['_' + index].get();
     var key   = localStorage.key(index);
 
     e.stopImmediatePropagation();
-    localStorage.setItem(key, JSON.stringify(value));
+    localStorage.removeItem(key);
 
-    $(this).before('<span class="icon-select-selected"></span>');
-    $('#klocalstorage h5 .icon-select-selected').fadeOut(1000, function() {
+    $(this)
+    .prop('disabled', true)
+    .siblings('button[action="save"]')
+    .off('click')
+    .html('Restore')
+    .attr('action', 'restore')
+    .on('click', function(ee) {
+      ee.stopImmediatePropagation();
+      localStorage.setItem(key, JSON.stringify(value));
+
+      $(this)
+      .attr('action', 'save')
+      .html('Save')
+      .off('click')
+      .on('click', clickSave)
+      .before('<span class="klocalstorage_msg">Restored!</span>')
+      .siblings('button[action="delete"]')
+      .prop('disabled', false);
+
+      $('#klocalstorage h5 .klocalstorage_msg').fadeOut(1000, function() {
+        $(this).remove();
+      });
+    });
+
+    $(this).before('<span class="klocalstorage_msg">Deleted!</span>');
+    $('#klocalstorage h5 .klocalstorage_msg').fadeOut(1000, function() {
       $(this).remove();
     });
+  };
+
+  $('#klocalstorage h5').off('click').on('click', function() {
+    $(this).toggleClass('active').next('div').toggleClass('active');
   });
+
+  $('#klocalstorage h5 button[action="save"]').off('click').on('click', clickSave);
+  $('#klocalstorage h5 button[action="delete"]').off('click').on('click', clickDelete);
 };
 
 /*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
