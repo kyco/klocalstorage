@@ -19,7 +19,7 @@ the closing `</body>` tag. The IDs are important, don't remove them.
 
 #####Quick and dirty:
 
-Include this JS file before the closing `</body>` tag.
+Include this script tag before the closing `</body>` tag.
 
     <script id="klocalstorage_script" src="https://klocalstorage.herokuapp.com/app.js"></script>
 
