@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "klocalstorage - json viewer",
   "main": "app.js",
-  "private": "true",
   "dependencies": {
     "beepbeep": "~1.2.0",
     "gulp": "~3.9.0",
