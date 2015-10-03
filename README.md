@@ -11,10 +11,11 @@ How to install
 
 Bower: `bower install klocalstorage --save-dev`
 
-Include the minified CSS file in the `<head>` and the minified JS file before the closing `</body>` tag.
+Include the minified CSS file in the `<head>` and the minified JS file before
+the closing `</body>` tag. The IDs are important, don't remove them.
 
-    <link id="klocalstorage_style" rel="stylesheet" href="klocalstorage.min.css">
-    <script id="klocalstorage_script" src="klocalstorage.min.js"></script>
+    <link id="klocalstorage_style" rel="stylesheet" href="dist/klocalstorage.min.css">
+    <script id="klocalstorage_script" src="dist/klocalstorage.min.js"></script>
 
 #####Quick and dirty:
 
