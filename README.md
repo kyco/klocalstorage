@@ -7,14 +7,14 @@ A plug and play local storage viewer.
 How to install
 --------------
 
-#####Recommended
+#####Recommended:
 
 Bower: `bower install klocalstorage --save-dev`
 
 Include the minified CSS file in the `<head>` and the minified JS file before the closing `</body>` tag.
 
-    <link rel="stylesheet" href="klocalstorage.min.css">
-    <script src="klocalstorage.min.js"></script>
+    <link id="klocalstorage_style" rel="stylesheet" href="klocalstorage.min.css">
+    <script id="klocalstorage_script" src="klocalstorage.min.js"></script>
 
 #####Quick and dirty:
 
