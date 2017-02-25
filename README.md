@@ -17,12 +17,6 @@ the closing `</body>` tag. The IDs are important, don't remove them.
     <link id="klocalstorage_style" rel="stylesheet" href="dist/klocalstorage.min.css">
     <script id="klocalstorage_script" src="dist/klocalstorage.min.js"></script>
 
-#####Quick and dirty:
-
-Include this script tag before the closing `</body>` tag.
-
-    <script id="klocalstorage_script" src="https://klocalstorage.herokuapp.com/app.js"></script>
-
 Usage
 -----
 
