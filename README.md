@@ -9,10 +9,10 @@ How to install
 
     Download or clone the repo
 
-Include the minified CSS file in the `<head>` and the minified JS file before the closing `</body>` tag. The IDs on the script tags are important, don't remove them.
+Include the CSS and JS from the `dist` directory. The minified CSS file goes into the `<head>` and the minified JS file goes before the closing `<body>` tag. The IDs on the script tags are important, don't remove them.
 
-    <link id="klocalstorage_style" rel="stylesheet" href="klocalstorage.min.css">
-    <script id="klocalstorage_script" src="klocalstorage.min.js"></script>
+    <link id="klocalstorage_style" rel="stylesheet" href="dist/klocalstorage.min.css">
+    <script id="klocalstorage_script" src="dist/klocalstorage.min.js"></script>
 
 Usage
 -----
