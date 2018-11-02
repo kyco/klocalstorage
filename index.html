@@ -1,0 +1,42 @@
+<!--
+/*
+**
+**  klocalstorage
+**  =============
+**
+**  Version 1.0.3
+**
+**  Brought to you by
+**  https://kyco.io
+**
+*/
+-->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Demo - klocalstorage</title>
+  <link id="klocalstorage_style" rel="stylesheet" href="klocalstorage.css">
+  <link rel="stylesheet" href="klocalstorage.demo.css">
+  <script id="klocalstorage_script" src="klocalstorage.js"></script>
+</head>
+<body>
+  <h2>klocalstorage</h2>
+  <p>Brought to you by <a href="https://kyco.io" target="_blank">kyco.io</a></p>
+  <hr>
+  <br>
+  <p>We run the following code to generate some local storage items. View them by clicking the plus icon ("+") in the top right hand corner.</p>
+<pre>
+localStorage.setItem('person', JSON.stringify({ name: 'bob', age: 20 }))
+localStorage.setItem('token', '123random_token')
+localStorage.setItem('valid-user', true)
+localStorage.setItem('fruits', JSON.stringify(['banana', 'apple']))
+</pre>
+  <script>
+    localStorage.setItem('person', JSON.stringify({ name: 'bob', age: 20 }))
+    localStorage.setItem('token', '123random_token')
+    localStorage.setItem('valid-user', true)
+    localStorage.setItem('fruits', JSON.stringify(['banana', 'apple']))
+  </script>
+</body>
+</html>
