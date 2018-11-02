@@ -4,6 +4,8 @@ klocalstorage
 
 A plug and play local storage viewer.
 
+[Demo](https://kyco.github.io/klocalstorage)
+
 How to install
 --------------
 
